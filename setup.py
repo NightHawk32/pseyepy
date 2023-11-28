@@ -47,7 +47,7 @@ elif sys.platform.startswith('win'):
     # https://sleangao.wordpress.com/2015/03/24/using-cython-under-windows-7-with-msvc-compiler/
     warnings.warn('Setup params not yet fully tested for Windows.')
 
-    libusb_incl = [os.path.join('pseyepy', 'ext', 'win', 'include', 'libusb-1.0')]
+    libusb_incl = [os.path.join('pseyepy', 'ext', 'win', 'include')]
     libusb_libpath = 'pseyepy/ext/win/lib'
     libs = ['libusb-1.0']
 
