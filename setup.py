@@ -6,6 +6,8 @@ import os, sys
 import warnings
 import subprocess
 
+files = []
+
 ### install libusb
 # keeping this slightly hacky approach to guarantee that the correct libusb is used and is easily findable
 if sys.platform in ('darwin','linux','linux2'):
@@ -50,6 +52,7 @@ elif sys.platform.startswith('win'):
     libusb_incl = [os.path.join('pseyepy', 'ext', 'win', 'include')]
     libusb_libpath = 'pseyepy/ext/win/lib'
     libs = ['libusb-1.0']
+    files = ["pseyepy/ext/win/lib/libusb-1.0.dll"]
 
 ### setup params
 os.environ["CC"]= "g++"
@@ -67,6 +70,7 @@ extensions = [  Extension('pseyepy.cameras',
 ### run setup
 setup(  name='pseyepy',
         version='0.0',
+        data_files= [("pseyepy", files)],
         description='pseyepy camera package',
         author='Ben Deverett',
         author_email='deverett@princeton.edu',
